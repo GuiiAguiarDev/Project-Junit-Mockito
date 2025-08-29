@@ -1,0 +1,36 @@
+image: maven:3.9.6-eclipse-temurin-21
+
+stages:
+  - build
+  - test
+  - deploy
+
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .m2/repository   
+    - target/         
+
+build-job:
+  stage: build
+  script:
+    - echo "Compilando projeto..."
+    - mvn clean compile -Dmaven.repo.local=.m2
+  artifacts:
+    paths:
+      - target/
+
+test-job:
+  stage: test
+  script:
+    - echo "Rodando testes..."
+    - mvn test -Dmaven.repo.local=.m2
+  artifacts:
+    reports:
+      junit: target/surefire-reports/*.xml
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploy simulado concluído"
