@@ -47,13 +47,13 @@ public class EmployeeController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Employee> clientUpdate(@PathVariable Long id, @RequestBody Employee updatedClient) {
-		Employee client = clientService.updateClient(id, updatedClient);
+		Employee client = clientService.updateEmployee(id, updatedClient);
 		return ResponseEntity.ok(client);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
-		clientService.deleteClient(id);
+		clientService.deleteEmployee(id);
 		return ResponseEntity.noContent().build();
 	}
 }

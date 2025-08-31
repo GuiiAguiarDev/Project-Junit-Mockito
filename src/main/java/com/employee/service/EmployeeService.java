@@ -37,7 +37,7 @@ public class EmployeeService {
 
 	}
 
-	public Employee updateClient(Long id, Employee updatedClient) {
+	public Employee updateEmployee(Long id, Employee updatedClient) {
 		Employee existingUser = clientRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid update - Client not found with id: " + id));
 
@@ -52,7 +52,7 @@ public class EmployeeService {
 
 	}
 
-	public void deleteClient(Long id) {
+	public void deleteEmployee(Long id) {
 
 		Employee client = clientRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid delete - Client not found with id: " + id));
